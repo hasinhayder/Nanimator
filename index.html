@@ -134,15 +134,15 @@
 		font-size:36px;
 	}
 
-	/*#se1-4{
+	#se1-4{
 		transform:scale(0.5);
 		opacity: 0;
 		position: absolute;
-		-webkit-transform-style: preserve-3d;
-		-webkit-backface-visibility: hidden;
+		top:-100px;
+		left:100px;
 	}
 
-	#se1-5{
+	/*#se1-5{
 		position: absolute;
 		right:0px;
 		opacity: 0;
@@ -192,52 +192,52 @@
 		width: 150px;
 		-webkit-transform-style: preserve-3d;
 		-webkit-backface-visibility: hidden;
-	}*/
+		}*/
 
-	</style>
-	<script src='js/prefixfree.js'></script>
-</head>
-<body>
-	<div class="fork">
-		<a href='https://github.com/hasinhayder/CSS3-Storyline-Animation' target='_blank'><img src="img/fork.png" alt=""></a>
+		</style>
+		<script src='js/prefixfree.js'></script>
+	</head>
+	<body>
+		<div class="fork">
+			<a href='https://github.com/hasinhayder/CSS3-Storyline-Animation' target='_blank'><img src="img/fork.png" alt=""></a>
+		</div>
+		<div class="content">
+			<h1>STORYLINE ANIMATION</h1>
+			<h2>WITH CSS3 TRANSITIONS & JQUERY TRANSIT</h2>
+			<p>
+				This is an example of Storyline Animation with CSS3 Transitions and Animations using <a target='_blank' href='http://ricostacruz.com/jquery.transit/'>jQuery Transit Library</a>. I kept the code clean and uncluttered so that you can understand what's happening just by having a look at it. Meanwhile, I will suggest you to have a look at <a target='_blank' href='http://ricostacruz.com/jquery.transit/'>jQuery Transit Documentation</a>.
+			</p>
+
+			<p class="credit">
+				Illustration Credit: <a href='http://miacabrera.deviantart.com/art/ken-masters-134143583' target='_blank'> Mia Cabrera</a>, <a href='http://y-u-k-i-k-o.deviantart.com/art/K-123283299' target='_blank'> y-u-k-i-k-o</a> and <a href='http://captain-tot.deviantart.com/art/KOF-King-209813954' target='_blank'> ~Captain-Tot</a>. The martial art movement silhouettes are purchased from <a target='_blank' href='http://www.shutterstock.com/pic-133247894/stock-photo-kungfu-fighter-super-human-special-power-mutant-stick-figure-pictogram-icon.html?src=same_artist-133247891-1'>ShutterStock</a>. 
+			</p>
+		</div>
+		<div class="container">
+			<ul class="slider">
+				<li class="slide" id="slide1">
+					<img class='se test' data-move-duration="2000" data-move-direction="none" id='se1-4' src="img/comic/1.jpg" alt="">
+					<!-- <img class='se' id='se1-5' src="img/comic/2.png" alt=""> -->
+					<h1 data-move-amount="40" data-move-direction="top" class='se test' id="se1-1">THIS SUMMER</h1>
+					<h1 data-move-amount="100" data-move-direction="left" class='se test' id="se1-2">THIS <span class="hcolor">HOTTER</span> NIGHT</h1>
+					<h1 data-move-amount="100" data-move-direction="right" class='se test' id="se1-3">& THIS <span class="hcolor">HOTTEST</span> FIGHT</h1>
+
+					<img class='se' id='se1-11' src="img/comic/8.jpg" alt=""><div class="element se1">
+
+					<h1  class='se' id="se1-12"><span class="hcolor">STAY<br/> TUNED<br/>FOR</br>MORE</span></h1>
+
+					<img class='se' id='se1-6' src="img/comic/3.png" alt=""><div class="element se1">
+					<img class='se' id='se1-7' src="img/comic/4.png" alt=""><div class="element se1">
+					<img class='se' id='se1-8' src="img/comic/5.png" alt=""><div class="element se1">
+					<img class='se' id='se1-9' src="img/comic/6.png" alt=""><div class="element se1">
+					<img class='se' id='se1-10' src="img/comic/7.png" alt=""><div class="element se1">
+
+				</div>
+			</li>
+		</ul>
 	</div>
-	<div class="content">
-		<h1>STORYLINE ANIMATION</h1>
-		<h2>WITH CSS3 TRANSITIONS & JQUERY TRANSIT</h2>
-		<p>
-			This is an example of Storyline Animation with CSS3 Transitions and Animations using <a target='_blank' href='http://ricostacruz.com/jquery.transit/'>jQuery Transit Library</a>. I kept the code clean and uncluttered so that you can understand what's happening just by having a look at it. Meanwhile, I will suggest you to have a look at <a target='_blank' href='http://ricostacruz.com/jquery.transit/'>jQuery Transit Documentation</a>.
-		</p>
 
-		<p class="credit">
-			Illustration Credit: <a href='http://miacabrera.deviantart.com/art/ken-masters-134143583' target='_blank'> Mia Cabrera</a>, <a href='http://y-u-k-i-k-o.deviantart.com/art/K-123283299' target='_blank'> y-u-k-i-k-o</a> and <a href='http://captain-tot.deviantart.com/art/KOF-King-209813954' target='_blank'> ~Captain-Tot</a>. The martial art movement silhouettes are purchased from <a target='_blank' href='http://www.shutterstock.com/pic-133247894/stock-photo-kungfu-fighter-super-human-special-power-mutant-stick-figure-pictogram-icon.html?src=same_artist-133247891-1'>ShutterStock</a>. 
-		</p>
-	</div>
-	<div class="container">
-		<ul class="slider">
-			<li class="slide" id="slide1">
-				<!-- <img class='se' id='se1-4' src="img/comic/1.jpg" alt=""> -->
-				<!-- <img class='se' id='se1-5' src="img/comic/2.png" alt=""> -->
-				<h1 data-move-amount="40" data-move-direction="top" class='se test' id="se1-1">THIS SUMMER</h1>
-				<h1 data-move-amount="100" data-move-direction="left" class='se test' id="se1-2">THIS <span class="hcolor">HOTTER</span> NIGHT</h1>
-				<h1 data-move-amount="100" data-move-direction="right" class='se test' id="se1-3">& THIS <span class="hcolor">HOTTEST</span> FIGHT</h1>
-				
-				<img class='se' id='se1-11' src="img/comic/8.jpg" alt=""><div class="element se1">
-
-				<h1  class='se' id="se1-12"><span class="hcolor">STAY<br/> TUNED<br/>FOR</br>MORE</span></h1>
-
-				<img class='se' id='se1-6' src="img/comic/3.png" alt=""><div class="element se1">
-				<img class='se' id='se1-7' src="img/comic/4.png" alt=""><div class="element se1">
-				<img class='se' id='se1-8' src="img/comic/5.png" alt=""><div class="element se1">
-				<img class='se' id='se1-9' src="img/comic/6.png" alt=""><div class="element se1">
-				<img class='se' id='se1-10' src="img/comic/7.png" alt=""><div class="element se1">
-				
-			</div>
-		</li>
-	</ul>
-</div>
-
-<script type='text/javascript'>
-$(document).ready(function(){
+	<script type='text/javascript'>
+	$(document).ready(function(){
 	// $(".se").css({position:"absolute",opacity:1,display:"none"});
 	$(".se").css({position:"absolute",opacity:0});
 	// $(".test").show();
@@ -247,11 +247,13 @@ $(document).ready(function(){
 	$(".test").each(function(){
 		var ma = $(this).data("move-amount");
 		var md = $(this).data("move-direction");
+		var mt = $(this).data("move-duration");
 		var parent = $(this).parents(".slide").attr("id");
 		anims.push({
 			obj:$(this),
 			ma:ma,
-			md:md
+			md:md,
+			mt:mt
 		});
 
 	});
@@ -281,6 +283,10 @@ $(document).ready(function(){
 			right:{
 				axis:"x",
 				factor:1
+			},
+			none:{
+				axis:0,
+				factor:0
 			}
 		}
 
@@ -291,12 +297,17 @@ $(document).ready(function(){
 		var element = anims[i];
 		var moveAmount = element.ma * animationDictionary[element.md].factor;
 		var moveAxis =  animationDictionary[element.md].axis;
-		var anim = {};
-		anim[moveAxis] = moveAmount*-1;
-		console.log(anim);
-		i+=1;
-		$(element.obj).transition(anim,0);
-		$(element.obj).transition({opacity:1,delay:delay,x:0,y:0},300,function(){
+		var moveDuration = element.mt;
+		if(!moveDuration) moveDuration=300;
+		if(moveAxis!="none"){
+			var anim = {};
+			anim[moveAxis] = moveAmount*-1;
+			console.log(anim);
+			i+=1;
+			$(element.obj).transition(anim,0);
+		}
+
+		$(element.obj).transition({opacity:1,delay:delay,x:0,y:0},moveDuration,function(){
 			animationChain(i);
 		});
 	}
