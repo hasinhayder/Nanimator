@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" > <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>CSS3 Storyline Animation using jQuery Transit Library</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900">
+	<link href='http://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+	<script src='js/jquery-1.10.2.js'></script>
+	
+	<script src='js/jquery.transit.js'></script>
+	<script src='js/jquery.nanimator.js'></script>
+	<style type="text/css">
+	body{
+		/*height: 10000px;*/
+		padding: 0px;
+		margin: 0px;
+		font-family: "Lato";
+		background-color: #2980b9;
+	}
+	.container{
+		width: 800px;
+		margin: auto;
+		margin-top: 50px;
+	}
+	ul.slider{
+		list-style-type: none;
+		position: relative;
+		padding: 0px;
+		margin: 0px;
+		width: 800px;
+		height: 350px;
+		background-color: #fff;
+		overflow: hidden;
+		font-family: 'Bangers', cursive;
+	}
+
+	ul.slider li.slide{
+		position: absolute;
+		list-style-type: none;
+		padding: 0px;
+		margin: 0px;
+		width: 800px;
+		overflow: hidden;
+		height: 350px;
+	}
+
+	ul.slider li.slider div.element{
+		position: absolute;
+	}
+
+	/** content **/
+	.content{
+		margin-top: 150px;
+		margin-left: 100px;
+		width: 700px;
+		display: none;
+	}
+	h1, h2{
+		font-family: "Source Sans Pro",sans-serif;
+		color: #333;
+		padding: 0px;
+		margin: 0px;
+		font-weight: normal;
+	}
+
+	h1{
+		font-weight: 900;
+		font-size: 24px;
+	}
+
+	h2{
+		font-size:26px;
+	}
+
+	p{
+		color: #ecf0f1;
+		font-family: "Lato";
+		line-height: 28px;
+		font-size: 15px;
+		padding-top: 50px;
+	}
+
+	p.credit{
+		padding-top: 20px;
+		font-size: 12px;
+	}
+
+	p a{
+		color: #ecf0f1;
+	}
+
+	.hcolor{
+		color:#c0392b;
+	}
+
+	/** fork icon**/
+	.fork{
+		position: absolute;
+		top:0px;
+		left: 0px;
+	}
+
+	/** Elements Def**/
+	#slide1{
+		padding-top: 10px;
+	}
+	#slide1 h1{
+		position: relative;
+		text-align: center;
+		margin-top: 20px;
+		font-weight: normal;
+	}
+
+	.chart{
+		position: absolute;
+		border-left: 1px solid #333;
+		border-bottom: 1px solid #333;
+		width: 550px;
+		height: 200px;
+		top:90px;
+		left:150px;
+		overflow: hidden;
+		padding-top: 21px;
+	}
+
+	.y{
+		width: 120px;
+		position: absolute;
+		left:20px;
+		top:100px;
+	}
+
+	.y h2{
+		font-size: 18px;
+		position: relative;
+		margin-top: 6px;
+		text-align: right;
+	}
+
+	.x{
+		height: 15px;
+		margin-bottom: 12px;
+		opacity: 0;
+		font-size: 10px;
+		color: #eee;
+		line-height: 15px;
+		text-align: right;
+		padding-right: 10px;
+		font-family: "Lato";
+	}
+
+	</style>
+	
+</head>
+<body>
+	<div class="fork">
+		<a href='https://github.com/hasinhayder/CSS3-Storyline-Animation' target='_blank'><img src="img/fork.png" alt=""></a>
+	</div>
+	<div class="content">
+		<h1>STORYLINE ANIMATION</h1>
+		<h2>WITH CSS3 TRANSITIONS & JQUERY TRANSIT</h2>
+		<p>
+			This is an example of Storyline Animation with CSS3 Transitions and Animations using <a target='_blank' href='http://ricostacruz.com/jquery.transit/'>jQuery Transit Library</a>. I kept the code clean and uncluttered so that you can understand what's happening just by having a look at it. Meanwhile, I will suggest you to have a look at <a target='_blank' href='http://ricostacruz.com/jquery.transit/'>jQuery Transit Documentation</a>.
+		</p>
+
+		<p class="credit">
+			Illustration Credit: <a href='http://miacabrera.deviantart.com/art/ken-masters-134143583' target='_blank'> Mia Cabrera</a>, <a href='http://y-u-k-i-k-o.deviantart.com/art/K-123283299' target='_blank'> y-u-k-i-k-o</a> and <a href='http://captain-tot.deviantart.com/art/KOF-King-209813954' target='_blank'> ~Captain-Tot</a>. The martial art movement silhouettes are purchased from <a target='_blank' href='http://www.shutterstock.com/pic-133247894/stock-photo-kungfu-fighter-super-human-special-power-mutant-stick-figure-pictogram-icon.html?src=same_artist-133247891-1'>ShutterStock</a>. 
+		</p>
+	</div>
+	<div class="container">
+		<ul class="slider">
+			<li class="slide" id="slide1">
+				<h1 class="nanimate">THIS YEAR IN PROGRESS</h1>
+				<div class="nanimate chart" id="chart" data-direction="none">
+					<div class="x" style="width:150px;background-color: #333;">150</div>
+					<div class="x" style="margin-bottom:16px;width:300px;background-color: #3498db;">300</div>
+					<div class="x" style="width:200px;background-color: #16a085;">200</div>
+					<div class="x" style="margin-bottom:16px;width:500px;background-color: #9b59b6;">500</div>
+					<div class="x" style="width:450px;background-color: #e74c3c;">450</div>
+					<div class="x" style="margin-bottom:16px;width:100px;background-color: #f39c12;">100</div>
+					<div class="x" style="width:400px;background-color: #34495e;">400</div>
+				</div>
+				<div class="y">
+					<h2 class="nanimate">JAN</h2>
+					<h2 class="nanimate">FEB</h2>
+					<h2 class="nanimate">MARCH</h2>
+					<h2 class="nanimate">APRIL</h2>
+					<h2 class="nanimate">MAY</h2>
+					<h2 class="nanimate">JUNE</h2>
+					<h2 class="nanimate">JULY</h2>
+				</div>
+				
+			</li>
+		</ul>
+	</div>
+
+	<script type='text/javascript'>
+
+	$(document).ready(function(){
+		$("#slide1").nanimate({delay:true});
+		$("#slide1").bind("nanimation.complete",function(){
+			//alert("done");
+			$(".x").each(function(){
+				$(this).data("direction","right")
+				.data("distance",$(this).width())
+				.data("time",$(this).width()*1.5);
+			});
+			$("#chart").nanimate({classname:"x",noevent:true,delay:false});
+		})
+	})
+	</script>
+
+</body>
+</html>
