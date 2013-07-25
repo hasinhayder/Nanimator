@@ -51,15 +51,24 @@
 		// Find the elements to animate. Add them in a list, but dont do it again if the list is already prepared
 		if(anims[id].length==0 || opts.reanimate){
 			//fire the custom event that traversing through elements is now started
-			$(this).trigger("nanimate.calculating");
+			$(this).trigger("nanimation.calculating");
 			$(this).find(".nanimate").each(function(){
+
 				var distance = $(this).data("distance");
+				if(!distance) distance="40";
 				var direction = $(this).data("direction");
+				if(!direction) direction = "top";
 				var time = $(this).data("time");
+				if(!time) time = "300";
 				var fade = $(this).data("fade");
+				if(!fade) fade=false
 				var duration = $(this).data("duration");
+				if(!duration) duration=1000;
 				var release = $(this).data("release");
+				if(!release) release=false;
 				var ease = $(this).data("ease");
+				if(!ease) ease="linear";
+
 				anims[id].push({
 					obj:$(this),
 					distance:distance,
@@ -73,11 +82,11 @@
 				$(this).css({opacity:0});
 
 			});
-			$(this).trigger("nanimate.calculated");
+			$(this).trigger("nanimation.calculated");
 		}
 		// console.log(anims,counters);
 
-		$(this).trigger("nanimate.started");
+		$(this).trigger("nanimation.started");
 		$.fn.animationChain(id,counters[id]);
 
 	}
@@ -85,7 +94,7 @@
 	$.fn.animationChain = function(id, i){
 		if(opts.cancel) return;
 		if(!anims[id][i]){
-			$("#"+id).trigger("nanimate.finished");
+			$("#"+id).trigger("nanimation.complete");
 			//$(anims[i-1].p).find(".test").transition({opacity:0,delay:500});//reset
 			// console.log("End");
 			return;
@@ -103,9 +112,6 @@
 		var release = element.release;
 		var ease = element.ease;
 
-		if(!ease) ease="linear"
-		if(!duration) duration=0;
-		if(!transitionTime) transitionTime=300;
 		if(moveAxis!="none"){
 			var anim = {};
 			anim[moveAxis] = moveAmount*-1;
@@ -114,7 +120,7 @@
 			$(element.obj).transition(anim,0);
 		}
 
-		$(element.obj).trigger("nanimate.started");
+		$(element.obj).trigger("nanimation.started");
 		$(element.obj).transition({opacity:1,delay:delay,x:0,y:0},transitionTime,ease,function(){
 			if(fade==true){
 				if(release!=true){
@@ -128,7 +134,7 @@
 			}else{
 				$.fn.animationChain(id,counters[id]);
 			}
-			$(element.obj).trigger("nanimate.finished");
+			$(element.obj).trigger("nanimation.finished");
 		});
 	}
 })(jQuery);
