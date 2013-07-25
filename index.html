@@ -2,7 +2,8 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" > <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" prefix="og: http://ogp.me/ns#"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
 	<title>CSS3 Storyline Animation using jQuery Transit Library</title>
@@ -199,7 +200,7 @@
 		}
 
 		</style>
-		<script src='js/prefixfree.js'></script>
+		<script src='js/jquery.nanimator.js'></script>
 	</head>
 	<body>
 		<div class="fork">
@@ -226,228 +227,17 @@
 					<h1 data-ma="100" data-md="right" class='se nanimate' id="se1-3">& THIS <span class="hcolor">HOTTEST</span> FIGHT</h1>	
 				</li>
 				<li class="slide" id="slide2">
-					<img data-ease="snap" data-fade='true' class="nanimate" id="fire" data-time="1000" data-direction="right" data-distance="100" src="img/comic/7.png" alt="">
+					<img data-ease="snap" class="nanimate" id="fire" data-time="1000" data-direction="right" data-distance="100" src="img/comic/7.png" alt="">
 				</li>
 			</ul>
 		</div>
 
 		<script type='text/javascript'>
+
 		$(document).ready(function(){
-	// $(".se").css({position:"absolute",opacity:1,display:"none"});
-	$(".se").css({position:"absolute",opacity:0});
-	// $(".test").show();
-	// var anims = [];
-	// var i=0;
+			$("#slide2").nanimate({delay:false});
+		})
+		</script>
 
-	// $(".test").each(function(){
-	// 	var ma = $(this).data("ma");
-	// 	var md = $(this).data("md");
-	// 	var mt = $(this).data("mt");
-	// 	var parent = $(this).parents(".slide");
-	// 	anims.push({
-	// 		obj:$(this),
-	// 		ma:ma,
-	// 		md:md,
-	// 		mt:mt,
-	// 		p:parent
-	// 	});
-
-	// });
-	// animationChain(0);
-
-	// function animationChain(i){
-
-	// 	if(!anims[i]){
-	// 		//$(anims[i-1].p).find(".test").transition({opacity:0,delay:500});//reset
-	// 		console.log("End");
-	// 		return;
-	// 	}
-
-	// 	var animationDictionary = {
-	// 		top:{
-	// 			axis:"y",
-	// 			factor:-1
-	// 		},
-	// 		bottom:{
-	// 			axis:"y",
-	// 			factor:1
-	// 		},
-	// 		left:{
-	// 			axis:"x",
-	// 			factor:-1
-	// 		},
-	// 		right:{
-	// 			axis:"x",
-	// 			factor:1
-	// 		},
-	// 		none:{
-	// 			axis:0,
-	// 			factor:0
-	// 		}
-	// 	}
-
-
-	// 	var delay = 0;
-	// 	if(i==0) delay=1000;
-
-	// 	var element = anims[i];
-	// 	var moveAmount = element.ma * animationDictionary[element.md].factor;
-	// 	var moveAxis =  animationDictionary[element.md].axis;
-	// 	var moveDuration = element.mt;
-	// 	if(!moveDuration) moveDuration=300;
-	// 	if(moveAxis!="none"){
-	// 		var anim = {};
-	// 		anim[moveAxis] = moveAmount*-1;
-	// 		console.log(anim);
-	// 		i+=1;
-	// 		$(element.obj).transition(anim,0);
-	// 	}
-
-	// 	$(element.obj).transition({opacity:1,delay:delay,x:0,y:0},moveDuration,function(){
-	// 		animationChain(i);
-	// 	});
-	// }
-
-});
-
-(function($){
-	var ids = 0;
-	var anims=[];
-	var counters=[];
-	var opts = {};
-	var defaults = {
-		cancel:false,
-		reanimate:false, //set this param to true in cas eyou add a dynamic element in the container and want to regenerate the mapping
-		delay:true
-	}
-	var animationDictionary = {
-		top:{
-			axis:"y",
-			factor:-1
-		},
-		bottom:{
-			axis:"y",
-			factor:1
-		},
-		left:{
-			axis:"x",
-			factor:-1
-		},
-		right:{
-			axis:"x",
-			factor:1
-		},
-		none:{
-			axis:0,
-			factor:0
-		}
-	}
-	$.fn.nanimate = function(options){	
-		opts = $.extend(defaults,options);
-		/** Preparation **/
-		if($(this).attr("id")==""){
-			//assign a temporary id
-			ids+=1;
-			id = "nanimated"+ids;
-			$(this).attr("id",id);
-		}
-		else{
-			id = $(this).attr("id");
-		}
-		
-		//initiate the container variables
-		anims[id]=[];
-		counters[id]=0;
-
-
-		/** Preparing the animation-able contents  - but check if they are already in the stack**/
-		if(anims[id].length==0 || opts.reanimate){
-			//fire the custom event that traversing through elements is now started
-			$(this).trigger("nanimate.calculating");
-			$(this).find(".nanimate").each(function(){
-				var ma = $(this).data("distance");
-				var md = $(this).data("direction");
-				var mt = $(this).data("time");
-				var fade = $(this).data("fade");
-				var duration = $(this).data("duration");
-				var release = $(this).data("release");
-				var ease = $(this).data("ease");
-				anims[id].push({
-					obj:$(this),
-					ma:ma,
-					md:md,
-					mt:mt,
-					fade:fade,
-					duration:duration,
-					release:release,
-					ease:ease
-				});
-				$(this).css({opacity:0});
-
-			});
-			$(this).trigger("nanimate.calculated");
-		}
-		// console.log(anims,counters);
-
-		$(this).trigger("nanimate.started");
-		$.fn.animationChain(id,counters[id]);
-
-	}
-
-	$.fn.animationChain = function(id, i){
-		if(opts.cancel) return;
-		if(!anims[id][i]){
-			$("#"+id).trigger("nanimate.finished");
-			//$(anims[i-1].p).find(".test").transition({opacity:0,delay:500});//reset
-			// console.log("End");
-			return;
-		}
-
-		var delay = 0;
-		if(i==0 && opts.delay) delay=1000;
-
-		var element = anims[id][counters[id]];
-		var moveAmount = element.ma * animationDictionary[element.md].factor;
-		var moveAxis =  animationDictionary[element.md].axis;
-		var transitionTime = element.mt;
-		var fade = element.fade;
-		var duration = element.duration;
-		var release = element.release;
-		var ease = element.ease;
-		if(!ease) ease="linear"
-		if(!duration) duration=0;
-		if(!transitionTime) transitionTime=300;
-		if(moveAxis!="none"){
-			var anim = {};
-			anim[moveAxis] = moveAmount*-1;
-			// console.log(anim);
-			counters[id]+=1;
-			$(element.obj).transition(anim,0);
-		}
-
-		$(element.obj).transition({opacity:1,delay:delay,x:0,y:0},transitionTime,ease,function(){
-			if(fade==true){
-				if(release!=true){
-					$(element.obj).transition({opacity:0,delay:duration},function(){
-						$.fn.animationChain(id,counters[id]);
-					});
-				}else{
-					$(element.obj).transition({opacity:0,delay:duration});
-					$.fn.animationChain(id,counters[id]);
-				}
-			}else{
-				$.fn.animationChain(id,counters[id]);
-			}
-		});
-	}
-
-	
-})(jQuery);
-
-$(document).ready(function(){
-	$("#slide2").nanimate({delay:false});
-})
-</script>
-
-</body>
-</html>
+	</body>
+	</html>
