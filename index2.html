@@ -34,7 +34,7 @@
 		padding: 0px;
 		margin: 0px;
 		width: 800px;
-		height: 350px;
+		height: 400px;
 		background-color: #fff;
 		overflow: hidden;
 		font-family: 'Bangers', cursive;
@@ -47,7 +47,7 @@
 		margin: 0px;
 		width: 800px;
 		overflow: hidden;
-		height: 350px;
+		height: 400px;
 	}
 
 	ul.slider li.slider div.element{
@@ -126,7 +126,7 @@
 	.adjectives{
 		position: absolute;
 		top:135px;
-		left: 230px;
+		left: 210px;
 		font-size: 72px;
 		font-family: 'Bangers', cursive;
 		width: 100%;
@@ -182,10 +182,10 @@
 					<img src="img/about2.jpg" alt="">
 				</div>
 				<div class="text-container">
-					<h1 id="t1" class="nanimate">SOMETHING</h1>
-					<h1 id="t2" class="nanimate">THAT <span class="hcolor">SAYS</span></h1>
-					<h1 id="t3" class="nanimate">HOW</h1>
-					<h1 id="t4" class="nanimate" data-release='true'>YOU ARE</h1>
+					<h1 id="t1" class="nanimate">Something</h1>
+					<h1 id="t2" class="nanimate">that <span class="hcolor">says</span></h1>
+					<h1 id="t3" class="nanimate">How</h1>
+					<h1 id="t4" class="nanimate" data-release='true'>YOU ARE!</h1>
 					<h1 class="adjectives nanimate" data-time='300' data-direction="left" data-distance='20' data-fade='true' data-duration='1400'>AWESOME</h1>
 					<h1 class="adjectives nanimate" data-time='300' data-direction="top" data-distance='20' data-fade='true' data-duration='1400'><span class="hcolor">FANTASTIC</span></h1>
 					<h1 class="adjectives nanimate" data-time='300' data-direction="bottom" data-distance='20' data-fade='true' data-duration='1400'>BRILLIANT</h1>
@@ -208,9 +208,9 @@
 
 	$(document).ready(function(){
 		$("#slide1").nanimate({delay:false});
-		$("#slide1").bind("nanimation.complete",function(){
-			$(".text-container").nanimate({hide:true});
-		})
+		// $("#slide1").bind("nanimation.complete",function(){
+		// 	$(".text-container").nanimate({hide:true});
+		// })
 	})
 	</script>
 
