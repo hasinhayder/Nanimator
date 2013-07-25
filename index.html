@@ -14,11 +14,19 @@
 	<script src='js/jquery-1.10.2.js'></script>
 	
 	<script src='js/jquery.transit.js'></script>
+	<script src='js/jquery.nanimator.js'></script>
 	<style type="text/css">
 	body{
 		/*height: 10000px;*/
+		padding: 0px;
+		margin: 0px;
 		font-family: "Lato";
 		background-color: #2980b9;
+	}
+	.container{
+		width: 800px;
+		margin: auto;
+		margin-top: 50px;
 	}
 	ul.slider{
 		list-style-type: none;
@@ -28,8 +36,6 @@
 		width: 800px;
 		height: 350px;
 		background-color: #fff;
-		margin-left: 100px;
-		margin-bottom: 200px;
 		overflow: hidden;
 		font-family: 'Bangers', cursive;
 	}
@@ -46,13 +52,6 @@
 
 	ul.slider li.slider div.element{
 		position: absolute;
-	}
-
-
-
-	.slide h1, .slide h2, .slide h3{
-		color:#333;
-		font-family: 'Bangers', cursive;
 	}
 
 	/** content **/
@@ -72,7 +71,7 @@
 
 	h1{
 		font-weight: 900;
-		font-size: 64px;
+		font-size: 24px;
 	}
 
 	h2{
@@ -108,136 +107,52 @@
 	}
 
 	/** Elements Def**/
-	#se1-1{
-		position: absolute;
-		top:100px;
-		left:200px;
-		width: 410px;
-		/*opacity: 0;*/
+	#slide1 h1{
+		position: relative;
+		text-align: center;
+		margin-top: 20px;
+		font-weight: normal;
 	}
 
-	#se1-2{
-		top:180px;
-		position: absolute;
-		left:20px;
-		width: 380px;
-		/*opacity:0;*/
-		font-size: 36px;
-	}
+	</style>
+	
+</head>
+<body>
+	<div class="fork">
+		<a href='https://github.com/hasinhayder/CSS3-Storyline-Animation' target='_blank'><img src="img/fork.png" alt=""></a>
+	</div>
+	<div class="content">
+		<h1>STORYLINE ANIMATION</h1>
+		<h2>WITH CSS3 TRANSITIONS & JQUERY TRANSIT</h2>
+		<p>
+			This is an example of Storyline Animation with CSS3 Transitions and Animations using <a target='_blank' href='http://ricostacruz.com/jquery.transit/'>jQuery Transit Library</a>. I kept the code clean and uncluttered so that you can understand what's happening just by having a look at it. Meanwhile, I will suggest you to have a look at <a target='_blank' href='http://ricostacruz.com/jquery.transit/'>jQuery Transit Documentation</a>.
+		</p>
 
-	#se1-3{
-		top:180px;
-		position: absolute;
-		left:370px;
-		width: 500px;
-		font-size:36px;
-	}
+		<p class="credit">
+			Illustration Credit: <a href='http://miacabrera.deviantart.com/art/ken-masters-134143583' target='_blank'> Mia Cabrera</a>, <a href='http://y-u-k-i-k-o.deviantart.com/art/K-123283299' target='_blank'> y-u-k-i-k-o</a> and <a href='http://captain-tot.deviantart.com/art/KOF-King-209813954' target='_blank'> ~Captain-Tot</a>. The martial art movement silhouettes are purchased from <a target='_blank' href='http://www.shutterstock.com/pic-133247894/stock-photo-kungfu-fighter-super-human-special-power-mutant-stick-figure-pictogram-icon.html?src=same_artist-133247891-1'>ShutterStock</a>. 
+		</p>
+	</div>
+	<div class="container">
+		<ul class="slider">
+			<li class="slide" id="slide1">
+				<h1 class="nanimate" data-distance="20" data-time="100">Hello Nanimator!</h1>
+				<h1 class="nanimate" data-distance="20" data-time="100">Welcome to the world of <span class="hcolor">Nanimations</span></h1>
+				<h1 class="nanimate" data-distance="20" data-time="100">Where Beautiful <span class="hcolor">N</span>ano A<span class="hcolor">nimations</span> Are done in 2KB Only!</h1>
+				<h1 class="nanimate" data-distance="20" data-time="100">Time to see some more examples.</h1>
+			</li>
+		</ul>
+	</div>
 
-	#se1-4{
-		transform:scale(0.5);
-		opacity: 0;
-		position: absolute;
-		top:-100px;
-		left:100px;
-	}
+	<script type='text/javascript'>
 
-	/*#se1-5{
-		position: absolute;
-		right:0px;
-		opacity: 0;
-		top:100;
-		-webkit-transform-style: preserve-3d;
-		-webkit-backface-visibility: hidden;
-	}
+	$(document).ready(function(){
+		$("#slide1").nanimate({delay:true});
 
-	#se1-6, #se1-7,  #se1-8, #se1-9, #se1-10{
-		position: absolute;
-		top:200px;
-		left: 40px;
-		opacity: 0;
-		-webkit-transform-style: preserve-3d;
-		-webkit-backface-visibility: hidden;
-	}
-
-	#se1-7{
-		left:150px;
-	}
-
-	#se1-8{
-		left: 300px;
-	}
-	#se1-9{
-		left: 430px;
-	}
-	#se1-10{
-		left: 530px;
-	}
-
-	#se1-11{
-		position: absolute;
-		transform:scale(0.25);
-		top:500;
-		left:700;
-		opacity: 0;
-		-webkit-transform-style: preserve-3d;
-		-webkit-backface-visibility: hidden;
-	}
-
-	#se1-12{
-		position: absolute;
-		right: 50px;
-		top:-120px;
-		opacity: 0;
-		width: 150px;
-		-webkit-transform-style: preserve-3d;
-		-webkit-backface-visibility: hidden;
-		}*/
-
-		#fire{
-			position: absolute;
-			top:100px;
-			left:100px;
-		}
-
-		</style>
-		<script src='js/jquery.nanimator.js'></script>
-	</head>
-	<body>
-		<div class="fork">
-			<a href='https://github.com/hasinhayder/CSS3-Storyline-Animation' target='_blank'><img src="img/fork.png" alt=""></a>
-		</div>
-		<div class="content">
-			<h1>STORYLINE ANIMATION</h1>
-			<h2>WITH CSS3 TRANSITIONS & JQUERY TRANSIT</h2>
-			<p>
-				This is an example of Storyline Animation with CSS3 Transitions and Animations using <a target='_blank' href='http://ricostacruz.com/jquery.transit/'>jQuery Transit Library</a>. I kept the code clean and uncluttered so that you can understand what's happening just by having a look at it. Meanwhile, I will suggest you to have a look at <a target='_blank' href='http://ricostacruz.com/jquery.transit/'>jQuery Transit Documentation</a>.
-			</p>
-
-			<p class="credit">
-				Illustration Credit: <a href='http://miacabrera.deviantart.com/art/ken-masters-134143583' target='_blank'> Mia Cabrera</a>, <a href='http://y-u-k-i-k-o.deviantart.com/art/K-123283299' target='_blank'> y-u-k-i-k-o</a> and <a href='http://captain-tot.deviantart.com/art/KOF-King-209813954' target='_blank'> ~Captain-Tot</a>. The martial art movement silhouettes are purchased from <a target='_blank' href='http://www.shutterstock.com/pic-133247894/stock-photo-kungfu-fighter-super-human-special-power-mutant-stick-figure-pictogram-icon.html?src=same_artist-133247891-1'>ShutterStock</a>. 
-			</p>
-		</div>
-		<div class="container">
-			<ul class="slider">
-				<li class="slide" id="slide1" style="display: none;">
-					<img class='se nanimate' data-mt="2000" data-md="none" id='se1-4' src="img/comic/1.jpg" alt="">
-					<!-- <img class='se' id='se1-5' src="img/comic/2.png" alt=""> -->
-					<h1 data-release='true' data-duration="400" data-ma="40" data-fade='true' data-md="bottom" class='se nanimate' id="se1-1">THIS SUMMER</h1>
-					<h1 data-ma="100" data-md="left" class='se nanimate' id="se1-2">THIS <span class="hcolor">HOTTER</span> NIGHT</h1>
-					<h1 data-ma="100" data-md="right" class='se nanimate' id="se1-3">& THIS <span class="hcolor">HOTTEST</span> FIGHT</h1>	
-				</li>
-				<li class="slide" id="slide2">
-					<img data-ease="snap" class="nanimate" id="fire" data-time="1000" data-direction="right" data-distance="100" src="img/comic/7.png" alt="">
-				</li>
-			</ul>
-		</div>
-
-		<script type='text/javascript'>
-
-		$(document).ready(function(){
-			$("#slide2").nanimate({delay:false});
+		$("#slide1").bind("nanimation.complete",function(){
+			alert("finished");
 		})
-		</script>
+	})
+	</script>
 
-	</body>
-	</html>
+</body>
+</html>
