@@ -7,7 +7,10 @@
 		cancel:false,
 		reanimate:false, //set this param to true in cas eyou add a dynamic element in the container and want to regenerate the mapping
 		delay:true,
-		hide:false//command
+		hide:false,//command,
+		classname:"nanimate",
+		noevent:false,
+		transparent:true
 	}
 	var animationDictionary = {
 		top:{
@@ -46,7 +49,7 @@
 		}
 
 		if(opts.hide){
-			$(this).find(".nanimate").transition({opacity:0});
+			$(this).find("."+opts.classname).transition({opacity:0});
 			return true;
 		}
 		//initiate the container variables
@@ -57,8 +60,10 @@
 		// Find the elements to animate. Add them in a list, but dont do it again if the list is already prepared
 		if(anims[id].length==0 || opts.reanimate){
 			//fire the custom event that traversing through elements is now started
-			$(this).trigger("nanimation.calculating");
-			$(this).find(".nanimate").each(function(){
+			if(!opts.noevent) $(this).trigger("nanimation.calculating");
+
+
+			$(this).find("."+opts.classname).each(function(){
 
 				var distance = $(this).data("distance");
 				if(!distance) distance="40";
@@ -85,10 +90,10 @@
 					release:release,
 					ease:ease
 				});
-				$(this).css({opacity:0});
+				if(opts.transparent) $(this).css({opacity:0});
 
 			});
-			$(this).trigger("nanimation.calculated");
+			if(!opts.noevent) $(this).trigger("nanimation.calculated");
 		}
 		// console.log(anims,counters);
 
@@ -100,7 +105,7 @@
 	$.fn.animationChain = function(id, i){
 		if(opts.cancel) return;
 		if(!anims[id][i]){
-			$("#"+id).trigger("nanimation.complete");
+			if(!opts.noevent) $("#"+id).trigger("nanimation.complete");
 			//$(anims[i-1].p).find(".test").transition({opacity:0,delay:500});//reset
 			// console.log("End");
 			return;
@@ -126,7 +131,7 @@
 			$(element.obj).transition(anim,0);
 		}
 
-		$(element.obj).trigger("nanimation.started");
+		if(!opts.noevent) $(element.obj).trigger("nanimation.started");
 		$(element.obj).transition({opacity:1,delay:delay,x:0,y:0},transitionTime,ease,function(){
 			if(fade==true){
 				if(release!=true){
@@ -140,7 +145,7 @@
 			}else{
 				$.fn.animationChain(id,counters[id]);
 			}
-			$(element.obj).trigger("nanimation.finished");
+			if(!opts.noevent) $(element.obj).trigger("nanimation.finished");
 		});
 	}
 })(jQuery);
