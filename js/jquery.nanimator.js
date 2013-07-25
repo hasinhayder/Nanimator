@@ -127,6 +127,7 @@
 			}else{
 				$.fn.animationChain(id,counters[id]);
 			}
+			$(element.obj).trigger("nanimate.finished");
 		});
 	}
 })(jQuery);
