@@ -192,6 +192,12 @@
 		-webkit-backface-visibility: hidden;
 		}*/
 
+		#fire{
+			position: absolute;
+			top:100px;
+			left:100px;
+		}
+
 		</style>
 		<script src='js/prefixfree.js'></script>
 	</head>
@@ -212,20 +218,21 @@
 		</div>
 		<div class="container">
 			<ul class="slider">
-				<li class="slide" id="slide1">
+				<li class="slide" id="slide1" style="display: none;">
 					<img class='se nanimate' data-mt="2000" data-md="none" id='se1-4' src="img/comic/1.jpg" alt="">
 					<!-- <img class='se' id='se1-5' src="img/comic/2.png" alt=""> -->
-					<h1 data-ma="40" data-md="bottom" class='se nanimate' id="se1-1">THIS SUMMER</h1>
+					<h1 data-release='true' data-duration="400" data-ma="40" data-fade='true' data-md="bottom" class='se nanimate' id="se1-1">THIS SUMMER</h1>
 					<h1 data-ma="100" data-md="left" class='se nanimate' id="se1-2">THIS <span class="hcolor">HOTTER</span> NIGHT</h1>
 					<h1 data-ma="100" data-md="right" class='se nanimate' id="se1-3">& THIS <span class="hcolor">HOTTEST</span> FIGHT</h1>	
+				</li>
+				<li class="slide" id="slide2">
+					<img data-ease="snap" data-fade='true' class="nanimate" id="fire" data-time="1000" data-direction="right" data-distance="100" src="img/comic/7.png" alt="">
+				</li>
+			</ul>
+		</div>
 
-				</div>
-			</li>
-		</ul>
-	</div>
-
-	<script type='text/javascript'>
-	$(document).ready(function(){
+		<script type='text/javascript'>
+		$(document).ready(function(){
 	// $(".se").css({position:"absolute",opacity:1,display:"none"});
 	$(".se").css({position:"absolute",opacity:0});
 	// $(".test").show();
@@ -358,14 +365,22 @@
 			//fire the custom event that traversing through elements is now started
 			$(this).trigger("nanimate.calculating");
 			$(this).find(".nanimate").each(function(){
-				var ma = $(this).data("ma");
-				var md = $(this).data("md");
-				var mt = $(this).data("mt");
+				var ma = $(this).data("distance");
+				var md = $(this).data("direction");
+				var mt = $(this).data("time");
+				var fade = $(this).data("fade");
+				var duration = $(this).data("duration");
+				var release = $(this).data("release");
+				var ease = $(this).data("ease");
 				anims[id].push({
 					obj:$(this),
 					ma:ma,
 					md:md,
 					mt:mt,
+					fade:fade,
+					duration:duration,
+					release:release,
+					ease:ease
 				});
 				$(this).css({opacity:0});
 
@@ -394,8 +409,14 @@
 		var element = anims[id][counters[id]];
 		var moveAmount = element.ma * animationDictionary[element.md].factor;
 		var moveAxis =  animationDictionary[element.md].axis;
-		var moveDuration = element.mt;
-		if(!moveDuration) moveDuration=300;
+		var transitionTime = element.mt;
+		var fade = element.fade;
+		var duration = element.duration;
+		var release = element.release;
+		var ease = element.ease;
+		if(!ease) ease="linear"
+		if(!duration) duration=0;
+		if(!transitionTime) transitionTime=300;
 		if(moveAxis!="none"){
 			var anim = {};
 			anim[moveAxis] = moveAmount*-1;
@@ -404,8 +425,19 @@
 			$(element.obj).transition(anim,0);
 		}
 
-		$(element.obj).transition({opacity:1,delay:delay,x:0,y:0},moveDuration,function(){
-			$.fn.animationChain(id,counters[id]);
+		$(element.obj).transition({opacity:1,delay:delay,x:0,y:0},transitionTime,ease,function(){
+			if(fade==true){
+				if(release!=true){
+					$(element.obj).transition({opacity:0,delay:duration},function(){
+						$.fn.animationChain(id,counters[id]);
+					});
+				}else{
+					$(element.obj).transition({opacity:0,delay:duration});
+					$.fn.animationChain(id,counters[id]);
+				}
+			}else{
+				$.fn.animationChain(id,counters[id]);
+			}
 		});
 	}
 
@@ -413,8 +445,7 @@
 })(jQuery);
 
 $(document).ready(function(){
-	$("#slide1").nanimate();
-	//$("body").nanimate({getval:true});
+	$("#slide2").nanimate({delay:false});
 })
 </script>
 
