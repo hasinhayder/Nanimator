@@ -107,6 +107,9 @@
 	}
 
 	/** Elements Def**/
+	#slide1{
+		padding-top: 60px;
+	}
 	#slide1 h1{
 		position: relative;
 		text-align: center;
@@ -135,10 +138,10 @@
 	<div class="container">
 		<ul class="slider">
 			<li class="slide" id="slide1">
-				<h1 class="nanimate" data-distance="20" data-time="100">Hello Nanimator!</h1>
-				<h1 class="nanimate" data-distance="20" data-time="100">Welcome to the world of <span class="hcolor">Nanimations</span></h1>
-				<h1 class="nanimate" data-distance="20" data-time="100">Where Beautiful <span class="hcolor">N</span>ano A<span class="hcolor">nimations</span> Are done in 2KB Only!</h1>
-				<h1 class="nanimate" data-distance="20" data-time="100">Time to see some more examples.</h1>
+				<h1 class="nanimate">Say Hello To Nanimator!</h1>
+				<h1 class="nanimate">Welcome to the world of <span class="hcolor">Nanimations</span></h1>
+				<h1 class="nanimate">Where Beautiful <span class="hcolor">N</span>ano A<span class="hcolor">nimations</span> Are done in 2KB Only!</h1>
+				<h1 class="nanimate">Time to see some more examples.</h1>
 			</li>
 		</ul>
 	</div>
@@ -147,10 +150,6 @@
 
 	$(document).ready(function(){
 		$("#slide1").nanimate({delay:true});
-
-		$("#slide1").bind("nanimation.complete",function(){
-			alert("finished");
-		})
 	})
 	</script>
 
