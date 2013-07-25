@@ -114,6 +114,7 @@
 			$(element.obj).transition(anim,0);
 		}
 
+		$(element.obj).trigger("nanimate.started");
 		$(element.obj).transition({opacity:1,delay:delay,x:0,y:0},transitionTime,ease,function(){
 			if(fade==true){
 				if(release!=true){
