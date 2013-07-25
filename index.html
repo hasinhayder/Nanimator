@@ -40,18 +40,16 @@
 		margin: 0px;
 		width: 800px;
 		overflow: hidden;
+		height: 350px;
 	}
 
 	ul.slider li.slider div.element{
 		position: absolute;
 	}
 
-	div.element{
-		height: 350px;
-		overflow: hidden;
-	}
 
-	div.element h1, div.element h2, div.element h3{
+
+	.slide h1, .slide h2, .slide h3{
 		color:#333;
 		font-family: 'Bangers', cursive;
 	}
@@ -215,21 +213,11 @@
 		<div class="container">
 			<ul class="slider">
 				<li class="slide" id="slide1">
-					<img class='se test' data-move-duration="2000" data-move-direction="none" id='se1-4' src="img/comic/1.jpg" alt="">
+					<img class='se nanimate' data-mt="2000" data-md="none" id='se1-4' src="img/comic/1.jpg" alt="">
 					<!-- <img class='se' id='se1-5' src="img/comic/2.png" alt=""> -->
-					<h1 data-move-amount="40" data-move-direction="top" class='se test' id="se1-1">THIS SUMMER</h1>
-					<h1 data-move-amount="100" data-move-direction="left" class='se test' id="se1-2">THIS <span class="hcolor">HOTTER</span> NIGHT</h1>
-					<h1 data-move-amount="100" data-move-direction="right" class='se test' id="se1-3">& THIS <span class="hcolor">HOTTEST</span> FIGHT</h1>
-
-					<img class='se' id='se1-11' src="img/comic/8.jpg" alt=""><div class="element se1">
-
-					<h1  class='se' id="se1-12"><span class="hcolor">STAY<br/> TUNED<br/>FOR</br>MORE</span></h1>
-
-					<img class='se' id='se1-6' src="img/comic/3.png" alt=""><div class="element se1">
-					<img class='se' id='se1-7' src="img/comic/4.png" alt=""><div class="element se1">
-					<img class='se' id='se1-8' src="img/comic/5.png" alt=""><div class="element se1">
-					<img class='se' id='se1-9' src="img/comic/6.png" alt=""><div class="element se1">
-					<img class='se' id='se1-10' src="img/comic/7.png" alt=""><div class="element se1">
+					<h1 data-ma="40" data-md="bottom" class='se nanimate' id="se1-1">THIS SUMMER</h1>
+					<h1 data-ma="100" data-md="left" class='se nanimate' id="se1-2">THIS <span class="hcolor">HOTTER</span> NIGHT</h1>
+					<h1 data-ma="100" data-md="right" class='se nanimate' id="se1-3">& THIS <span class="hcolor">HOTTEST</span> FIGHT</h1>	
 
 				</div>
 			</li>
@@ -241,60 +229,169 @@
 	// $(".se").css({position:"absolute",opacity:1,display:"none"});
 	$(".se").css({position:"absolute",opacity:0});
 	// $(".test").show();
-	var anims = [];
-	var i=0;
+	// var anims = [];
+	// var i=0;
 
-	$(".test").each(function(){
-		var ma = $(this).data("move-amount");
-		var md = $(this).data("move-direction");
-		var mt = $(this).data("move-duration");
-		var parent = $(this).parents(".slide").attr("id");
-		anims.push({
-			obj:$(this),
-			ma:ma,
-			md:md,
-			mt:mt
-		});
+	// $(".test").each(function(){
+	// 	var ma = $(this).data("ma");
+	// 	var md = $(this).data("md");
+	// 	var mt = $(this).data("mt");
+	// 	var parent = $(this).parents(".slide");
+	// 	anims.push({
+	// 		obj:$(this),
+	// 		ma:ma,
+	// 		md:md,
+	// 		mt:mt,
+	// 		p:parent
+	// 	});
 
-	});
-	animationChain(0);
+	// });
+	// animationChain(0);
 
-	function animationChain(i){
+	// function animationChain(i){
 
-		if(!anims[i]){
-			$(anims[i-1].obj).parents(".slide").find(".test").transition({opacity:0,delay:500});//reset
-			console.log("End");
+	// 	if(!anims[i]){
+	// 		//$(anims[i-1].p).find(".test").transition({opacity:0,delay:500});//reset
+	// 		console.log("End");
+	// 		return;
+	// 	}
+
+	// 	var animationDictionary = {
+	// 		top:{
+	// 			axis:"y",
+	// 			factor:-1
+	// 		},
+	// 		bottom:{
+	// 			axis:"y",
+	// 			factor:1
+	// 		},
+	// 		left:{
+	// 			axis:"x",
+	// 			factor:-1
+	// 		},
+	// 		right:{
+	// 			axis:"x",
+	// 			factor:1
+	// 		},
+	// 		none:{
+	// 			axis:0,
+	// 			factor:0
+	// 		}
+	// 	}
+
+
+	// 	var delay = 0;
+	// 	if(i==0) delay=1000;
+
+	// 	var element = anims[i];
+	// 	var moveAmount = element.ma * animationDictionary[element.md].factor;
+	// 	var moveAxis =  animationDictionary[element.md].axis;
+	// 	var moveDuration = element.mt;
+	// 	if(!moveDuration) moveDuration=300;
+	// 	if(moveAxis!="none"){
+	// 		var anim = {};
+	// 		anim[moveAxis] = moveAmount*-1;
+	// 		console.log(anim);
+	// 		i+=1;
+	// 		$(element.obj).transition(anim,0);
+	// 	}
+
+	// 	$(element.obj).transition({opacity:1,delay:delay,x:0,y:0},moveDuration,function(){
+	// 		animationChain(i);
+	// 	});
+	// }
+
+});
+
+(function($){
+	var ids = 0;
+	var anims=[];
+	var counters=[];
+	var opts = {};
+	var defaults = {
+		cancel:false,
+		reanimate:false, //set this param to true in cas eyou add a dynamic element in the container and want to regenerate the mapping
+		delay:true
+	}
+	var animationDictionary = {
+		top:{
+			axis:"y",
+			factor:-1
+		},
+		bottom:{
+			axis:"y",
+			factor:1
+		},
+		left:{
+			axis:"x",
+			factor:-1
+		},
+		right:{
+			axis:"x",
+			factor:1
+		},
+		none:{
+			axis:0,
+			factor:0
+		}
+	}
+	$.fn.nanimate = function(options){	
+		opts = $.extend(defaults,options);
+		/** Preparation **/
+		if($(this).attr("id")==""){
+			//assign a temporary id
+			ids+=1;
+			id = "nanimated"+ids;
+			$(this).attr("id",id);
+		}
+		else{
+			id = $(this).attr("id");
+		}
+		
+		//initiate the container variables
+		anims[id]=[];
+		counters[id]=0;
+
+
+		/** Preparing the animation-able contents  - but check if they are already in the stack**/
+		if(anims[id].length==0 || opts.reanimate){
+			//fire the custom event that traversing through elements is now started
+			$(this).trigger("nanimate.calculating");
+			$(this).find(".nanimate").each(function(){
+				var ma = $(this).data("ma");
+				var md = $(this).data("md");
+				var mt = $(this).data("mt");
+				anims[id].push({
+					obj:$(this),
+					ma:ma,
+					md:md,
+					mt:mt,
+				});
+				$(this).css({opacity:0});
+
+			});
+			$(this).trigger("nanimate.calculated");
+		}
+		// console.log(anims,counters);
+
+		$(this).trigger("nanimate.started");
+		$.fn.animationChain(id,counters[id]);
+
+	}
+
+	$.fn.animationChain = function(id, i){
+		if(opts.cancel) return;
+		if(!anims[id][i]){
+			$("#"+id).trigger("nanimate.finished");
+			//$(anims[i-1].p).find(".test").transition({opacity:0,delay:500});//reset
+			// console.log("End");
 			return;
 		}
 
-		var animationDictionary = {
-			top:{
-				axis:"y",
-				factor:-1
-			},
-			bottom:{
-				axis:"y",
-				factor:1
-			},
-			left:{
-				axis:"x",
-				factor:-1
-			},
-			right:{
-				axis:"x",
-				factor:1
-			},
-			none:{
-				axis:0,
-				factor:0
-			}
-		}
-
-		
 		var delay = 0;
-		if(i==0) delay=1000;
+		if(i==0 && opts.delay) delay=1000;
 
-		var element = anims[i];
+		var element = anims[id][counters[id]];
 		var moveAmount = element.ma * animationDictionary[element.md].factor;
 		var moveAxis =  animationDictionary[element.md].axis;
 		var moveDuration = element.mt;
@@ -302,16 +399,22 @@
 		if(moveAxis!="none"){
 			var anim = {};
 			anim[moveAxis] = moveAmount*-1;
-			console.log(anim);
-			i+=1;
+			// console.log(anim);
+			counters[id]+=1;
 			$(element.obj).transition(anim,0);
 		}
 
 		$(element.obj).transition({opacity:1,delay:delay,x:0,y:0},moveDuration,function(){
-			animationChain(i);
+			$.fn.animationChain(id,counters[id]);
 		});
 	}
 
+	
+})(jQuery);
+
+$(document).ready(function(){
+	$("#slide1").nanimate();
+	//$("body").nanimate({getval:true});
 })
 </script>
 
