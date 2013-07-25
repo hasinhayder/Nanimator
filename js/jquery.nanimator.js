@@ -6,7 +6,8 @@
 	var defaults = {
 		cancel:false,
 		reanimate:false, //set this param to true in cas eyou add a dynamic element in the container and want to regenerate the mapping
-		delay:true
+		delay:true,
+		hide:false//command
 	}
 	var animationDictionary = {
 		top:{
@@ -42,6 +43,11 @@
 		}
 		else{
 			id = $(this).attr("id");
+		}
+
+		if(opts.hide){
+			$(this).find(".nanimate").transition({opacity:0});
+			return true;
 		}
 		//initiate the container variables
 		anims[id]=[];
