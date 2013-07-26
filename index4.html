@@ -21,7 +21,7 @@
 		padding: 0px;
 		margin: 0px;
 		font-family: "Lato";
-		background-color: #2980b9;
+		background-color: #95a5a6;
 	}
 	.container{
 		width: 800px;
@@ -48,6 +48,7 @@
 		width: 800px;
 		overflow: hidden;
 		height: 350px;
+		background-color:#ecf0f1;
 	}
 
 	ul.slider li.slider div.element{
@@ -96,7 +97,7 @@
 	}
 
 	.hcolor{
-		color:#c0392b;
+		color:#e67e22;
 	}
 
 	/** fork icon**/
@@ -115,45 +116,88 @@
 		text-align: center;
 		margin-top: 20px;
 		font-weight: normal;
+		font-family: 'Bangers', cursive;
+		font-size: 27px;
 	}
 
-	.chart{
+	#r2{
+		width: 200px;
 		position: absolute;
-		border-left: 1px solid #444;
-		border-bottom: 1px solid #444;
-		width: 550px;
-		height: 200px;
-		top:90px;
-		left:150px;
-		overflow: hidden;
-		padding-top: 21px;
+		top:100px;
+		left:140px;
 	}
 
-	.y{
-		width: 120px;
+	.r2features{
+		width: 130px;
 		position: absolute;
-		left:20px;
 		top:100px;
 	}
 
-	.y h2{
+	.r2features h2{
 		font-size: 18px;
-		margin-top: 6px;
-		text-align: right;
-		color: #444;
+		padding:10px 20px;
+		background-color: #2c3e50;
+		color: #eee;
+		text-transform: uppercase;
+		margin-top: 10px;
+		text-align: center;
 	}
 
-	.x{
-		height: 15px;
-		margin-bottom: 12px;
-		opacity: 0;
-		font-size: 10px;
-		color: #eee;
-		line-height: 15px;
-		text-align: right;
-		padding-right: 10px;
-		font-family: "Lato";
+	h1#r2-name{
+		position: absolute;
+		left: 223px;
+		top:285px;
+		width: 100px;
+		text-align: left;
 	}
+
+	h1#vs{
+		position: absolute;
+		top:181px;
+		left:345px;
+		text-align: left;
+		width: 100px;
+		font-size: 72px;
+		color: #e74c3c;
+		text-align: center;
+	}
+
+	#r3{
+		width: 200px;
+		position: absolute;
+		top:106px;
+		left:471px;
+	}
+
+	.r3features{
+		width: 130px;
+		position: absolute;
+		top:100px;
+		right: 0px;
+	}
+
+	.r3features h2{
+		font-size: 18px;
+		padding:10px 20px;
+		background-color: #2980b9;
+		color: #eee;
+		text-transform: uppercase;
+		margin-top: 10px;
+		text-align: center;
+	}
+
+	h1#r3-name{
+		position: absolute;
+		left: 555px;
+		top:285px;
+		width: 100px;
+		text-align: left;
+	}
+
+	h1#month{
+		font-size: 48px;
+	}
+
 
 	</style>
 	
@@ -176,26 +220,27 @@
 	<div class="container">
 		<ul class="slider">
 			<li class="slide" id="slide1">
-				<h1 class="nanimate">THIS YEAR IN PROGRESS</h1>
-				<div class="nanimate chart" id="chart" data-direction="none">
-					<div class="x" style="width:150px;background-color: #333;">$150K</div>
-					<div class="x" style="margin-bottom:16px;width:300px;background-color: #3498db;">$300K</div>
-					<div class="x" style="width:200px;background-color: #16a085;">$200K</div>
-					<div class="x" style="margin-bottom:16px;width:500px;background-color: #9b59b6;">$500K</div>
-					<div class="x" style="width:450px;background-color: #e74c3c;">$450K</div>
-					<div class="x" style="margin-bottom:16px;width:100px;background-color: #f39c12;">$100K</div>
-					<div class="x" style="width:400px;background-color: #34495e;">$400K</div>
+				<h1 class="nanimate">ROBO WRESTLING FEDERATION</h1>
+				<h1 class="nanimate">MATCH OF THE MONTH</span></h1>
+				<h1 id="month" class="nanimate"><span class="hcolor">JULY 2013</span></h1>
+				<img id="r2" src="img/r2.png" data-direction="right" data-distance="100" alt="" class="nanimate">
+				<div class="r2features">
+					<h2 class="nanimate" data-direction="right">2100lb</h2>
+					<h2 class="nanimate" data-direction="right">POWER X</h2>
+					<h2 class="nanimate" data-direction="right">SHIELD Y</h2>
+					<h2 class="nanimate" data-direction="right">MAGIC Z</h2>
 				</div>
-				<div class="y">
-					<h2 class="nanimate">JAN</h2>
-					<h2 class="nanimate">FEB</h2>
-					<h2 class="nanimate">MAR</h2>
-					<h2 class="nanimate">APR</h2>
-					<h2 class="nanimate">MAY</h2>
-					<h2 class="nanimate">JUN</h2>
-					<h2 class="nanimate">JUL</h2>
+				<h1 id="r2-name" class="nanimate">R2</h1>
+				<h1 id="vs" data-direction="bottom" class="nanimate">VS</h1>
+				<img id="r3" src="img/r3.png" data-direction="left" data-distance="100" alt="" class="nanimate">
+				<div class="r3features">
+					<h2 class="nanimate" data-direction="left">2400lb</h2>
+					<h2 class="nanimate" data-direction="left">POWER A</h2>
+					<h2 class="nanimate" data-direction="left">SHIELD B</h2>
+					<h2 class="nanimate" data-direction="left">MAGIC C</h2>
 				</div>
-				
+				<h1 id="r3-name" class="nanimate">R3</h1>
+
 			</li>
 		</ul>
 	</div>
@@ -203,17 +248,7 @@
 	<script type='text/javascript'>
 
 	$(document).ready(function(){
-		$(".y h2").data("direction","bottom");
 		$("#slide1").nanimate({delay:true});
-		$("#slide1").bind("nanimation.complete",function(){
-			//alert("done");
-			$(".x").each(function(){
-				$(this).data("direction","right")
-				.data("distance",$(this).width())
-				.data("time",$(this).width()*1.5);
-			});
-			$("#chart").nanimate({classname:"x",noevent:true,delay:false});
-		})
 	})
 	</script>
 
