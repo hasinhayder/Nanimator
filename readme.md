@@ -1,0 +1,1 @@
+View http://hasin.me/2013/07/31/introducing-nanimator-library-for-nano-animations/ for Details on using Nanimator.
