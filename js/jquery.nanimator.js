@@ -73,8 +73,8 @@
 				if(!time) time = "300";
 				var fade = $(this).data("fade");
 				if(!fade) fade=false
-				var duration = $(this).data("duration");
-				if(!duration) duration=1000;
+				var fadedelay = $(this).data("fadedelay");
+				if(!fadedelay) fadedelay=1000;
 				var release = $(this).data("release");
 				if(!release) release=false;
 				var ease = $(this).data("ease");
@@ -86,7 +86,7 @@
 					direction:direction,
 					time:time,
 					fade:fade,
-					duration:duration,
+					fadedelay:fadedelay,
 					release:release,
 					ease:ease
 				});
@@ -119,7 +119,7 @@
 		var moveAxis =  animationDictionary[element.direction].axis;
 		var transitionTime = element.time;
 		var fade = element.fade;
-		var duration = element.duration;
+		var fadedelay = element.fadedelay;
 		var release = element.release;
 		var ease = element.ease;
 
@@ -135,11 +135,11 @@
 		$(element.obj).transition({opacity:1,delay:delay,x:0,y:0},transitionTime,ease,function(){
 			if(fade==true){
 				if(release!=true){
-					$(element.obj).transition({opacity:0,delay:duration},function(){
+					$(element.obj).transition({opacity:0,delay:fadedelay},function(){
 						$.fn.animationChain(id,counters[id]);
 					});
 				}else{
-					$(element.obj).transition({opacity:0,delay:duration});
+					$(element.obj).transition({opacity:0,delay:fadedelay});
 					$.fn.animationChain(id,counters[id]);
 				}
 			}else{
